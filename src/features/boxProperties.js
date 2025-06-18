@@ -7,7 +7,6 @@ const initialState = [
     name: "Border radius",
     value: 25,
     type: "range",
-    slice: "boxProperties",
     minMax: [0, 250],
   },
   {
@@ -15,7 +14,6 @@ const initialState = [
     name: "Height",
     value: 250,
     type: "range",
-    slice: "boxProperties",
     minMax: [0, 500],
   },
   {
@@ -24,14 +22,12 @@ const initialState = [
     value: 250,
     type: "range",
     minMax: [0, 500],
-    slice: "boxProperties",
   },
   {
     inputNumber: 4,
-    name: "Color",
+    name: "BackGround Color",
     value: "#fff",
     type: "color",
-    slice: "boxProperties",
   },
 ];
 
@@ -39,7 +35,10 @@ export const boxSlice = createSlice({
   name: "boxProperties",
   initialState,
   reducers: {
-    updateBoxValue: (state, action) => {},
+    updateBoxValue: (state, action) => {
+      state.find((el) => el.inputNumber === action.payload.inputNumber).value =
+        action.payload.value;
+    },
   },
 });
 
